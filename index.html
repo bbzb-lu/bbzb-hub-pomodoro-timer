@@ -4,196 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BBZB Pomodoro</title>
-  <link rel="icon" type="image/png" href="bbzb-tomate.png">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      image-rendering: pixelated;
-    }
-
-    body {
-      font-family: 'Press Start 2P', monospace;
-      background-color: #E8ECF4;
-      background-image:
-        radial-gradient(circle, #4A6FA5 1px, transparent 1px);
-      background-size: 24px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    /* ── Card ── */
-    .card {
-      background: #FFFFFF;
-      border: 4px solid #4A6FA5;
-      box-shadow: 6px 6px 0 #1A1A2E;
-      width: 100%;
-      max-width: 460px;
-    }
-
-    /* ── Title bar ── */
-    .titlebar {
-      background: #4A6FA5;
-      padding: 9px 14px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .dots {
-      display: flex;
-      gap: 6px;
-      flex-shrink: 0;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: #E84393;
-      border: 2px solid #1A1A2E;
-    }
-
-    .titlebar-text {
-      color: #FFFFFF;
-      font-size: 0.45rem;
-      letter-spacing: 3px;
-      flex: 1;
-    }
-
-    .titlebar-tomato {
-      width: 20px;
-      height: 20px;
-      image-rendering: pixelated;
-      flex-shrink: 0;
-    }
-
-    /* ── Card body ── */
-    .card-body {
-      padding: 22px 28px 26px;
-    }
-
-    /* ── Phase label ── */
-    .phase-label {
-      text-align: center;
-      font-size: 0.5rem;
-      color: #4A6FA5;
-      letter-spacing: 4px;
-      margin-bottom: 14px;
-      min-height: 1.2em;
-    }
-
-    /* ── Progress bar ── */
-    .phase-progress {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-
-    .pdot {
-      width: 12px;
-      height: 12px;
-      border: 2px solid #4A6FA5;
-      background: #C8D6E8;
-      flex-shrink: 0;
-    }
-
-    .pdot.done   { background: #4A6FA5; }
-    .pdot.active { background: #E84393; border-color: #E84393; }
-
-    /* ── Idle view ── */
-    #idle-view {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 22px;
-      padding: 10px 0 8px;
-    }
-
-    .idle-tomato {
-      width: 64px;
-      height: 64px;
-      image-rendering: pixelated;
-    }
-
-    .start-btn {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 1rem;
-      color: #FFFFFF;
-      background: #E84393;
-      border: 4px solid #1A1A2E;
-      box-shadow: 5px 5px 0 #1A1A2E;
-      padding: 18px 44px;
-      cursor: pointer;
-      letter-spacing: 4px;
-    }
-
-    .start-btn:hover {
-      background: #4A6FA5;
-      transform: translate(2px, 2px);
-      box-shadow: 3px 3px 0 #1A1A2E;
-    }
-
-    .start-btn:active {
-      transform: translate(5px, 5px);
-      box-shadow: 0 0 0 #1A1A2E;
-    }
-
-    /* ── Running view ── */
-    #running-view {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      padding: 8px 0 8px;
-    }
-
-    #running-view.visible { display: flex; }
-
-    .timer-display {
-      font-size: clamp(2rem, 8vw, 3rem);
-      color: #1A1A2E;
-      letter-spacing: 6px;
-      min-width: 6ch;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .btn-ctrl {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 0.65rem;
-      color: #FFFFFF;
-      background: #4A6FA5;
-      border: 3px solid #1A1A2E;
-      box-shadow: 4px 4px 0 #1A1A2E;
-      padding: 10px 12px;
-      cursor: pointer;
-      min-width: 46px;
-      text-align: center;
-      flex-shrink: 0;
-      line-height: 1.4;
-    }
-
-    .btn-ctrl:hover {
-      background: #E84393;
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 #1A1A2E;
-    }
-
-    .btn-ctrl:active {
-      transform: translate(4px, 4px);
-      box-shadow: 0 0 0 #1A1A2E;
-    }
-  </style>
+  <link rel="icon" type="image/png" href="icons/tomate.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="card">
+
     <div class="titlebar">
       <div class="dots">
         <div class="dot"></div>
@@ -201,133 +18,31 @@
         <div class="dot"></div>
       </div>
       <span class="titlebar-text">POMODORO TIMER</span>
-      <img src="bbzb-tomate.png" class="titlebar-tomato" alt="">
+      <img src="icons/tomate.png" class="titlebar-icon" alt="">
     </div>
 
     <div class="card-body">
+
       <div class="phase-label" id="phase-label">WORK</div>
       <div class="phase-progress" id="phase-progress"></div>
 
       <div id="idle-view">
-        <img src="bbzb-tomate.png" class="idle-tomato" alt="tomato">
+        <img src="icons/tomate.png" class="hero-icon" id="hero-icon" alt="">
         <button class="start-btn" id="start-btn">START</button>
       </div>
 
       <div id="running-view">
-        <button class="btn-ctrl" id="pause-btn" title="Pause / Resume">II</button>
-        <div class="timer-display" id="timer-display">25:00</div>
-        <button class="btn-ctrl" id="skip-btn" title="Skip phase">&gt;&gt;</button>
+        <img src="icons/tomate.png" class="hero-icon" id="running-icon" alt="">
+        <div class="timer-row">
+          <button class="btn-ctrl" id="pause-btn" title="Pause / Resume">II</button>
+          <div class="timer-display" id="timer-display">25:00</div>
+          <button class="btn-ctrl" id="skip-btn" title="Skip phase">&gt;&gt;</button>
+        </div>
       </div>
+
     </div>
   </div>
 
-  <script>
-    const PHASES = [
-      { label: 'WORK',        duration: 25 * 60 },
-      { label: 'SHORT BREAK', duration:  5 * 60 },
-      { label: 'WORK',        duration: 25 * 60 },
-      { label: 'SHORT BREAK', duration:  5 * 60 },
-      { label: 'WORK',        duration: 25 * 60 },
-      { label: 'SHORT BREAK', duration:  5 * 60 },
-      { label: 'WORK',        duration: 25 * 60 },
-      { label: 'LONG BREAK',  duration: 15 * 60 },
-    ];
-
-    let phaseIndex = 0;
-    let timeLeft   = PHASES[0].duration;
-    let intervalId = null;
-    let paused     = false;
-    let audioCtx   = null;
-
-    const elLabel    = document.getElementById('phase-label');
-    const elProgress = document.getElementById('phase-progress');
-    const elIdle     = document.getElementById('idle-view');
-    const elRunning  = document.getElementById('running-view');
-    const elTimer    = document.getElementById('timer-display');
-    const elPause    = document.getElementById('pause-btn');
-    const elSkip     = document.getElementById('skip-btn');
-    const elStart    = document.getElementById('start-btn');
-
-    function fmt(s) {
-      return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
-    }
-
-    function renderProgress() {
-      elProgress.innerHTML = '';
-      PHASES.forEach((_, i) => {
-        const d = document.createElement('div');
-        d.className = 'pdot' + (i < phaseIndex ? ' done' : i === phaseIndex ? ' active' : '');
-        elProgress.appendChild(d);
-      });
-    }
-
-    function syncUI() {
-      elLabel.textContent = PHASES[phaseIndex].label;
-      elTimer.textContent = fmt(timeLeft);
-      renderProgress();
-    }
-
-    function playChime() {
-      try {
-        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        [523, 659, 784].forEach((freq, i) => {
-          const osc  = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.type = 'square';
-          osc.frequency.value = freq;
-          const t = audioCtx.currentTime + i * 0.12;
-          gain.gain.setValueAtTime(0.12, t);
-          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
-          osc.start(t);
-          osc.stop(t + 0.18);
-        });
-      } catch (_) {}
-    }
-
-    function startTicking() {
-      clearInterval(intervalId);
-      intervalId = setInterval(() => {
-        timeLeft--;
-        if (timeLeft <= 0) {
-          phaseIndex = (phaseIndex + 1) % PHASES.length;
-          timeLeft   = PHASES[phaseIndex].duration;
-          playChime();
-        }
-        syncUI();
-      }, 1000);
-    }
-
-    elStart.addEventListener('click', () => {
-      elIdle.style.display = 'none';
-      elRunning.classList.add('visible');
-      syncUI();
-      startTicking();
-    });
-
-    elPause.addEventListener('click', () => {
-      if (paused) {
-        startTicking();
-        paused = false;
-        elPause.textContent = 'II';
-      } else {
-        clearInterval(intervalId);
-        paused = true;
-        elPause.textContent = '>';
-      }
-    });
-
-    elSkip.addEventListener('click', () => {
-      phaseIndex = (phaseIndex + 1) % PHASES.length;
-      timeLeft   = PHASES[phaseIndex].duration;
-      paused     = false;
-      elPause.textContent = 'II';
-      syncUI();
-      startTicking();
-    });
-
-    syncUI();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
