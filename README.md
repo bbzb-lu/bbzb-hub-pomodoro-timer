@@ -1,5 +1,7 @@
 # BBZB Pomodoro Timer
 
+> **Umgezogen (11.11.2026):** Dieses Embed liegt jetzt im Repo [bbzb-lu/bbzb-tools](https://github.com/bbzb-lu/bbzb-tools/tree/main/embeds/pomodoro-timer/) unter `embeds/pomodoro-timer/` und läuft unter https://bbzb-tools.pages.dev/sharepoint/pomodoro-timer/. Dieses Repo wird archiviert und nicht mehr gepflegt.
+
 Pomodoro-Timer fürs Lernen: 25 Minuten arbeiten, 5 Minuten Pause, vier Runden bis zur langen Pause.
 
 ## In SharePoint einbetten
